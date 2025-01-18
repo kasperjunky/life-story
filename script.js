@@ -67,7 +67,7 @@ function displayQuestion() {
   questionText.textContent = currentQuestion.question;
   optionsContainer.innerHTML = "";
 
-  // Disable "Next" button initially
+  // Disable the "Next" button initially
   nextButton.disabled = true;
 
   // Add options as buttons
@@ -98,7 +98,10 @@ function handleAnswer(selectedButton, selectedIndex) {
 
 // Move to the next question or show results
 nextButton.addEventListener("click", () => {
+  console.log("Next button clicked");
   currentQuestionIndex++;
+  console.log("Current Question Index:", currentQuestionIndex);
+
   if (currentQuestionIndex < questions.length) {
     displayQuestion(); // Show the next question
   } else {
@@ -139,11 +142,11 @@ async function getInsightsFromChatGPT(answers) {
     if (response.ok) {
       return data.choices[0].message.content; // ChatGPT's response
     } else {
-      console.error("Error from OpenAI:", data);
-      return "There was an error generating insights. Please try again later.";
+      console.error("OpenAI API Error:", data);
+      return "Error: Unable to generate insights.";
     }
   } catch (error) {
-    console.error("Network error:", error);
+    console.error("Network Error:", error);
     return "Network error occurred. Please check your connection.";
   }
 }
