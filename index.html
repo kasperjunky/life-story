@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Life Story</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Discover Your Life Story</h1>
+    <div id="question-container">
+      <p id="question-text"></p>
+      <div id="options-container"></div>
+    </div>
+    <button id="next-button" disabled>Next</button>
+    <div id="result-container" style="display: none;">
+      <h2>Your Story Summary</h2>
+      <p id="story-summary"></p>
+      <button id="download-button">Download PDF</button>
+      <button id="email-button">Email Summary</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
