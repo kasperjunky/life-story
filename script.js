@@ -63,14 +63,16 @@ const storySummary = document.getElementById("story-summary");
 
 // Display the current question
 function displayQuestion() {
+  console.log("Current Question Index inside displayQuestion:", currentQuestionIndex);
   const currentQuestion = questions[currentQuestionIndex];
+  console.log("Current Question Data:", currentQuestion);
+
+  // Update question text
   questionText.textContent = currentQuestion.question;
-  optionsContainer.innerHTML = "";
+  console.log("Updated question text:", questionText.textContent);
 
-  // Disable the "Next" button initially
-  nextButton.disabled = true;
-
-  // Add options as buttons
+  // Update options
+  optionsContainer.innerHTML = ""; // Clear previous options
   currentQuestion.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
@@ -78,10 +80,15 @@ function displayQuestion() {
     button.onclick = () => handleAnswer(button, index); // Handle selection
     optionsContainer.appendChild(button);
   });
+
+  // Disable the "Next" button
+  nextButton.disabled = true;
 }
 
 // Handle answer selection and enable the "Next" button
 function handleAnswer(selectedButton, selectedIndex) {
+  console.log("Answer selected:", selectedIndex, selectedButton.textContent);
+
   // Remove highlight from all buttons
   const allButtons = document.querySelectorAll(".option-button");
   allButtons.forEach((button) => button.classList.remove("selected"));
@@ -91,6 +98,7 @@ function handleAnswer(selectedButton, selectedIndex) {
 
   // Save the selected answer
   selectedAnswers[currentQuestionIndex] = questions[currentQuestionIndex].options[selectedIndex];
+  console.log("Selected Answers Array:", selectedAnswers);
 
   // Enable the "Next" button
   nextButton.disabled = false;
@@ -99,13 +107,18 @@ function handleAnswer(selectedButton, selectedIndex) {
 // Move to the next question or show results
 nextButton.addEventListener("click", () => {
   console.log("Next button clicked");
+  console.log("Current Question Index before increment:", currentQuestionIndex);
+
   currentQuestionIndex++;
-  console.log("Current Question Index:", currentQuestionIndex);
+
+  console.log("Current Question Index after increment:", currentQuestionIndex);
 
   if (currentQuestionIndex < questions.length) {
-    displayQuestion(); // Show the next question
+    console.log("Displaying the next question");
+    displayQuestion();
   } else {
-    showResults(); // Show results when all questions are answered
+    console.log("No more questions. Showing results");
+    showResults();
   }
 });
 
@@ -122,7 +135,7 @@ async function getInsightsFromChatGPT(answers) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
