@@ -124,7 +124,7 @@ nextButton.addEventListener("click", () => {
 
 // Function to get insights from ChatGPT
 async function getInsightsFromChatGPT(answers) {
-  const apiKey = "YOUR_OPENAI_API_KEY"; // Replace with your actual OpenAI API key
+  const apiKey = "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"; // Replace with your actual OpenAI API key
   const endpoint = "https://api.openai.com/v1/chat/completions";
 
   try {
