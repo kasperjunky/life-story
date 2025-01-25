@@ -118,6 +118,11 @@ const storySummary = document.getElementById("story-summary");
 const encouragingRewrite = document.getElementById("encouraging-rewrite");
 const practicalAdvice = document.getElementById("practical-advice");
 const languageToggle = document.getElementById("language-toggle");
+const downloadButton = document.createElement("button");
+downloadButton.textContent = "Download as PDF";
+downloadButton.style.display = "none";
+downloadButton.classList.add("download-button");
+document.body.appendChild(downloadButton);
 
 // Display the current question
 function displayQuestion() {
@@ -174,6 +179,7 @@ async function showResults() {
   optionsContainer.style.display = "none";
   nextButton.style.display = "none";
   resultContainer.style.display = "block";
+  downloadButton.style.display = "block";
 
   storySummary.textContent = "Generating insights... Please wait.";
 
@@ -184,6 +190,13 @@ async function showResults() {
   practicalAdvice.innerHTML = (insights.practicalAdvice || [])
     .map((advice) => `<li>${advice}</li>`)
     .join("") || "<li>No practical advice available.</li>";
+
+  // Prepare content for PDF download
+  const pdfContent = `Your Life Story:\n${storySummary.textContent}\n\nEncouraging Rewrite:\n${encouragingRewrite.textContent}\n\nPractical Advice:\n${Array.from(practicalAdvice.querySelectorAll("li"))
+    .map((li) => li.textContent)
+    .join("\n")}`;
+
+  downloadButton.onclick = () => downloadAsPDF(pdfContent);
 }
 
 // Fetch insights from the backend
@@ -206,6 +219,15 @@ async function getInsightsFromChatGPT(answers) {
       practicalAdvice: ["Error generating practical advice."]
     };
   }
+}
+
+// Download content as PDF
+function downloadAsPDF(content) {
+  const blob = new Blob([content], { type: "application/pdf" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "life_story.pdf";
+  link.click();
 }
 
 // Initialize
