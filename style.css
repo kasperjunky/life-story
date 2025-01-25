@@ -3,7 +3,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  text-align: center;
   direction: ltr;
 }
 
@@ -90,17 +89,24 @@ body[dir="ltr"] {
   text-align: left;
 }
 
+#result-container {
+  text-align: inherit; /* Ensures alignment based on language */
+}
+
+#result-container h2 {
+  margin-top: 20px;
+}
+
 #result-container p,
 #result-container ul {
-  text-align: inherit;
+  margin: 10px 0;
+  text-align: inherit; /* Align based on language */
 }
 
 /* Download button */
 .download-button {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin: 20px auto;
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #17a2b8;
@@ -108,7 +114,7 @@ body[dir="ltr"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: none;
+  display: block; /* Centers the button */
 }
 
 .download-button:hover {
