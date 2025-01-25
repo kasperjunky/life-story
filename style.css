@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  direction: ltr;
 }
 
 .container {
@@ -33,7 +34,13 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.option-button.selected {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #0056b3;
 }
 
 .option-button:hover {
@@ -81,4 +88,24 @@ body[dir="rtl"] {
 }
 body[dir="ltr"] {
   text-align: left;
+}
+
+/* Download button */
+.download-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.download-button:hover {
+  background-color: #138496;
 }
