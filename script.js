@@ -47,7 +47,7 @@ const questions = {
 
 let currentQuestionIndex = 0;
 let selectedAnswers = [];
-let currentLanguage = "en"; // Default language
+let currentLanguage = "en";
 
 // DOM elements
 const questionText = document.getElementById("question-text");
@@ -65,10 +65,8 @@ function displayQuestion() {
   questionText.textContent = currentQuestion.question;
   optionsContainer.innerHTML = "";
 
-  // Disable the "Next" button initially
   nextButton.disabled = true;
 
-  // Add options as buttons
   currentQuestion.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
@@ -120,14 +118,15 @@ async function showResults() {
   storySummary.textContent = "Generating insights... Please wait.";
 
   const insights = await getInsightsFromChatGPT(selectedAnswers);
-  storySummary.textContent = insights.storySummary;
-  encouragingRewrite.textContent = insights.encouragingRewrite;
-  practicalAdvice.innerHTML = insights.practicalAdvice
+  storySummary.textContent = insights.storySummary || "No summary available.";
+  encouragingRewrite.textContent =
+    insights.encouragingRewrite || "No encouraging rewrite available.";
+  practicalAdvice.innerHTML = (insights.practicalAdvice || [])
     .map((advice) => `<li>${advice}</li>`)
-    .join("");
+    .join("") || "<li>No practical advice available.</li>";
 }
 
-// Fetch insights
+// Fetch insights from the backend
 async function getInsightsFromChatGPT(answers) {
   try {
     const response = await fetch("https://interactive-backend.onrender.com/api/generate", {
@@ -135,10 +134,10 @@ async function getInsightsFromChatGPT(answers) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         language: currentLanguage,
-        answers: answers
+        answers,
       })
     });
-    return response.json();
+    return await response.json();
   } catch (error) {
     console.error("Network error:", error);
     return {
