@@ -19,36 +19,6 @@ const questions = {
         "I struggled with my self-worth.",
         "I avoided thinking about myself."
       ]
-    },
-    {
-      question: "How would you describe your relationships with your friends?",
-      options: [
-        "I have deep, meaningful friendships.",
-        "I have some close friends, but not many.",
-        "I have mostly casual friendships.",
-        "I struggle to maintain friendships.",
-        "I feel isolated and without close friends."
-      ]
-    },
-    {
-      question: "What do you feel you don’t have enough of in life?",
-      options: [
-        "Love and connection.",
-        "Someone who truly cares for me.",
-        "Confidence or self-esteem.",
-        "Purpose or direction.",
-        "Peace and emotional stability."
-      ]
-    },
-    {
-      question: "Do you feel comfortable with new experiences?",
-      options: [
-        "Yes, I love trying new things.",
-        "I enjoy new experiences but need time to adjust.",
-        "I feel hesitant but eventually try them.",
-        "I avoid new experiences whenever possible.",
-        "I’m fearful and rarely try new things."
-      ]
     }
   ],
   he: [
@@ -70,36 +40,6 @@ const questions = {
         "לא בטוח בעצמי.",
         "נאבקתי בתחושת הערך העצמי שלי.",
         "נמנעתי מלחשוב על עצמי."
-      ]
-    },
-    {
-      question: "איך היית מתאר את היחסים שלך עם החברים שלך?",
-      options: [
-        "יש לי חברויות עמוקות ומשמעותיות.",
-        "יש לי כמה חברים קרובים, אבל לא רבים.",
-        "יש לי בעיקר חברויות מזדמנות.",
-        "אני מתקשה לשמור על חברויות.",
-        "אני מרגיש מבודד וללא חברים קרובים."
-      ]
-    },
-    {
-      question: "מה לדעתך חסר לך בחיים?",
-      options: [
-        "אהבה וחיבור.",
-        "מישהו שבאמת דואג לי.",
-        "ביטחון עצמי או הערכה עצמית.",
-        "מטרה או כיוון.",
-        "שקט נפשי ויציבות רגשית."
-      ]
-    },
-    {
-      question: "האם אתה מרגיש בנוח עם חוויות חדשות?",
-      options: [
-        "כן, אני אוהב לנסות דברים חדשים.",
-        "אני נהנה מחוויות חדשות אבל צריך זמן להסתגל.",
-        "אני מרגיש היסוס אבל בסופו של דבר מנסה.",
-        "אני נמנע מחוויות חדשות מתי שרק אפשר.",
-        "אני חושש ולעיתים נדירות מנסה דברים חדשים."
       ]
     }
   ]
@@ -221,13 +161,15 @@ async function getInsightsFromChatGPT(answers) {
   }
 }
 
-// Download content as PDF
+// Download content as PDF using jsPDF
 function downloadAsPDF(content) {
-  const blob = new Blob([content], { type: "application/pdf" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "life_story.pdf";
-  link.click();
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+
+  const lines = doc.splitTextToSize(content, pageWidth - 20); // Wrap text
+  doc.text(lines, 10, 10);
+
+  doc.save("life_story.pdf");
 }
 
 // Initialize
