@@ -1,57 +1,76 @@
-/* General styling */
+/* General body styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
   direction: ltr;
 }
 
+/* Container for the questionnaire */
 .container {
+  width: 90%;
   max-width: 600px;
-  margin: 50px auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
 }
 
-h1 {
+/* Headings are centered */
+h1, h2 {
+  text-align: center;
   margin-bottom: 20px;
+  color: #333;
 }
 
-#question-container,
-#result-container {
-  margin-top: 20px;
+/* Insights text alignment changes based on language */
+#story-summary, #encouraging-rewrite, #practical-advice {
+  text-align: left;
+  margin: 10px 0;
+}
+
+/* Hebrew language adjusts to RTL */
+body[dir="rtl"] #story-summary,
+body[dir="rtl"] #encouraging-rewrite,
+body[dir="rtl"] #practical-advice {
+  text-align: right;
+}
+
+/* Question and options styling */
+#question-text {
+  margin: 20px 0;
 }
 
 .option-button {
   display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.option-button.selected {
+.option-button:hover, .option-button.selected {
   background-color: #007bff;
-  color: white;
-  border: 1px solid #0056b3;
+  color: #ffffff;
 }
 
-.option-button:hover {
-  background-color: #d1ecf1;
-}
-
+/* Navigation buttons */
 #next-button {
   margin-top: 20px;
   padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #28a745;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -62,61 +81,13 @@ h1 {
   cursor: not-allowed;
 }
 
-/* Language toggle button */
-.language-toggle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.language-toggle:hover {
-  background-color: #218838;
-}
-
-/* Align text based on language */
-body[dir="rtl"] {
-  text-align: right;
-}
-body[dir="ltr"] {
-  text-align: left;
-}
-
-#result-container {
-  text-align: inherit; /* Ensures alignment based on language */
-}
-
-#result-container h2 {
-  margin-top: 20px;
-}
-
-#result-container p,
-#result-container ul {
-  margin: 10px 0;
-  text-align: inherit; /* Align based on language */
-}
-
-/* Download button */
+/* Download button styling */
 .download-button {
-  position: relative;
-  margin: 20px auto;
+  margin-top: 30px;
   padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #17a2b8;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: block; /* Centers the button */
-}
-
-.download-button:hover {
-  background-color: #138496;
 }
