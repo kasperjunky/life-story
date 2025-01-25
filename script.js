@@ -6,8 +6,38 @@ const questions = [
       "I felt safe most of the time.",
       "I sometimes felt safe but often uncertain.",
       "I rarely felt safe or cared for.",
-      "I never felt safe or cared for.",
-    ],
+      "I never felt safe or cared for."
+    ]
+  },
+  {
+    question: "How did you feel about yourself as a teenager?",
+    options: [
+      "Confident and self-assured.",
+      "Generally okay, with occasional self-doubt.",
+      "Insecure and unsure of myself.",
+      "I struggled with my self-worth.",
+      "I avoided thinking about myself."
+    ]
+  },
+  {
+    question: "How would you describe your relationships with your friends?",
+    options: [
+      "I have deep, meaningful friendships.",
+      "I have some close friends, but not many.",
+      "I have mostly casual friendships.",
+      "I struggle to maintain friendships.",
+      "I feel isolated and without close friends."
+    ]
+  },
+  {
+    question: "What do you feel you don’t have enough of in life?",
+    options: [
+      "Love and connection.",
+      "Someone who truly cares for me.",
+      "Confidence or self-esteem.",
+      "Purpose or direction.",
+      "Peace and emotional stability."
+    ]
   },
   {
     question: "Do you feel comfortable with new experiences?",
@@ -16,9 +46,9 @@ const questions = [
       "I enjoy new experiences but need time to adjust.",
       "I feel hesitant but eventually try them.",
       "I avoid new experiences whenever possible.",
-      "I’m fearful and rarely try new things.",
-    ],
-  },
+      "I’m fearful and rarely try new things."
+    ]
+  }
 ];
 
 let currentQuestionIndex = 0;
@@ -40,11 +70,12 @@ function displayQuestion() {
   // Disable the "Next" button initially
   nextButton.disabled = true;
 
+  // Add options as buttons
   currentQuestion.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
     button.classList.add("option-button");
-    button.onclick = () => handleAnswer(button, index);
+    button.onclick = () => handleAnswer(button, index); // Handle selection
     optionsContainer.appendChild(button);
   });
 }
@@ -53,19 +84,21 @@ function displayQuestion() {
 function handleAnswer(selectedButton, selectedIndex) {
   const allButtons = document.querySelectorAll(".option-button");
   allButtons.forEach((button) => button.classList.remove("selected"));
-
   selectedButton.classList.add("selected");
+
+  // Save the selected answer
   selectedAnswers[currentQuestionIndex] = questions[currentQuestionIndex].options[selectedIndex];
-  nextButton.disabled = false;
+  nextButton.disabled = false; // Enable the "Next" button
 }
 
 // Move to the next question or show results
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
+
   if (currentQuestionIndex < questions.length) {
-    displayQuestion();
+    displayQuestion(); // Show the next question
   } else {
-    showResults();
+    showResults(); // Show results when all questions are answered
   }
 });
 
@@ -81,14 +114,13 @@ async function getInsightsFromChatGPT(answers) {
         messages: [
           {
             role: 'system',
-            content: `You are a helpful assistant. Based on the answers provided, generate:
-1. A conversational summary of the user's life story, starting with phrases like "Based on your answers, it seems that you had a ____________ childhood."
-2. A rewritten, positive, and empowering version of the story (heading: "Rewrite Your Story").
-3. Practical steps the user can take to address gaps or challenges in their story (heading: "Practical Suggestions").`,
+            content: 'You are a helpful assistant that provides insights based on user answers.',
           },
           {
             role: 'user',
-            content: `Here are the user's answers: ${answers.join(', ')}`,
+            content: `The user provided the following answers to a questionnaire: ${answers.join(
+              ', '
+            )}. Generate a life story summary, encouraging rewrite, and practical advice.`,
           },
         ],
       }),
@@ -96,55 +128,28 @@ async function getInsightsFromChatGPT(answers) {
 
     const data = await response.json();
     if (response.ok) {
-      return parseInsights(data.choices[0].message.content);
+      return data.choices[0].message.content;
     } else {
-      console.error("Backend API Error:", data);
-      return {
-        lifeStory: "Error: Unable to generate your life story.",
-        rewriteStory: "Error: Unable to rewrite your story.",
-        practicalSuggestions: "Error: Unable to provide suggestions.",
-      };
+      console.error('Backend API Error:', data.error);
+      return 'Error: Unable to generate insights.';
     }
   } catch (error) {
-    console.error("Network Error:", error);
-    return {
-      lifeStory: "Network error occurred. Please check your connection.",
-      rewriteStory: "Network error occurred. Please check your connection.",
-      practicalSuggestions: "Network error occurred. Please check your connection.",
-    };
+    console.error('Network Error:', error);
+    return 'Network error occurred. Please check your connection.';
   }
 }
 
-// Parse insights into structured sections
-function parseInsights(responseText) {
-  const lifeStoryMatch = responseText.match(/Your Life Story:\s*(.+?)(?=Rewrite Your Story:|$)/s);
-  const rewriteStoryMatch = responseText.match(/Rewrite Your Story:\s*(.+?)(?=Practical Suggestions:|$)/s);
-  const practicalSuggestionsMatch = responseText.match(/Practical Suggestions:\s*(.+)$/s);
-
-  return {
-    lifeStory: lifeStoryMatch ? lifeStoryMatch[1].trim() : "No summary provided.",
-    rewriteStory: rewriteStoryMatch ? rewriteStoryMatch[1].trim() : "No rewrite provided.",
-    practicalSuggestions: practicalSuggestionsMatch ? practicalSuggestionsMatch[1].trim() : "No suggestions provided.",
-  };
-}
-
-// Show results
+// Show results with insights from ChatGPT
 async function showResults() {
   questionText.style.display = "none";
   optionsContainer.style.display = "none";
   nextButton.style.display = "none";
   resultContainer.style.display = "block";
 
-  storySummary.innerHTML = "<p>Generating insights... Please wait.</p>";
+  storySummary.textContent = "Generating insights... Please wait.";
+
   const insights = await getInsightsFromChatGPT(selectedAnswers);
-  storySummary.innerHTML = `
-    <h2>Your Life Story</h2>
-    <p>${insights.lifeStory}</p>
-    <h2>Rewrite Your Story</h2>
-    <p>${insights.rewriteStory}</p>
-    <h2>Practical Suggestions</h2>
-    <p>${insights.practicalSuggestions}</p>
-  `;
+  storySummary.textContent = insights;
 }
 
 // Initialize the first question
