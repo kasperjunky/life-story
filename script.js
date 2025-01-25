@@ -119,11 +119,7 @@ const storySummary = document.getElementById("story-summary");
 const encouragingRewrite = document.getElementById("encouraging-rewrite");
 const practicalAdvice = document.getElementById("practical-advice");
 const languageToggle = document.getElementById("language-toggle");
-const downloadButton = document.createElement("button");
-downloadButton.textContent = "Download as PDF";
-downloadButton.style.display = "none";
-downloadButton.classList.add("download-button");
-document.body.appendChild(downloadButton);
+const downloadButton = document.getElementById("download-pdf");
 
 // Display the current question
 function displayQuestion() {
@@ -222,14 +218,11 @@ async function getInsightsFromChatGPT(answers) {
   }
 }
 
-// Download content as PDF using jsPDF
+// Download content as PDF
 function downloadAsPDF(content) {
+  const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  const pageWidth = doc.internal.pageSize.getWidth();
-
-  const lines = doc.splitTextToSize(content, pageWidth - 20); // Wrap text
-  doc.text(lines, 10, 10);
-
+  doc.text(content, 10, 10);
   doc.save("life_story.pdf");
 }
 
