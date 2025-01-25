@@ -1,0 +1,116 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  direction: ltr;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#question-container,
+#result-container {
+  margin-top: 20px;
+}
+
+.option-button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.option-button.selected {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #0056b3;
+}
+
+.option-button:hover {
+  background-color: #d1ecf1;
+}
+
+#next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Language toggle button */
+.language-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.language-toggle:hover {
+  background-color: #218838;
+}
+
+/* Align text based on language */
+body[dir="rtl"] {
+  text-align: right;
+}
+body[dir="ltr"] {
+  text-align: left;
+}
+
+#result-container p,
+#result-container ul {
+  text-align: inherit;
+}
+
+/* Download button */
+.download-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.download-button:hover {
+  background-color: #138496;
+}
