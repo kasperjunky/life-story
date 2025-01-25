@@ -1,3 +1,14 @@
+// Clear previous cache or local storage
+function clearCache() {
+  console.log("Clearing cache...");
+  localStorage.clear(); // Clears all local storage data
+  sessionStorage.clear(); // Clears all session storage data
+  console.log("Cache cleared.");
+}
+
+// Call clearCache on page load
+clearCache();
+
 const questions = {
   en: [
     {
