@@ -60,6 +60,9 @@ const optionsContainer = document.getElementById("options-container");
 const nextButton = document.getElementById("next-button");
 const resultContainer = document.getElementById("result-container");
 const storySummary = document.getElementById("story-summary");
+const lifeStoryHeading = document.getElementById("life-story-heading");
+const encouragingRewriteHeading = document.getElementById("encouraging-rewrite-heading");
+const practicalAdviceHeading = document.getElementById("practical-advice-heading");
 
 // Display the current question
 function displayQuestion() {
@@ -67,38 +70,34 @@ function displayQuestion() {
   questionText.textContent = currentQuestion.question;
   optionsContainer.innerHTML = "";
 
-  // Disable the "Next" button initially
   nextButton.disabled = true;
 
-  // Add options as buttons
   currentQuestion.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
     button.classList.add("option-button");
-    button.onclick = () => handleAnswer(button, index); // Handle selection
+    button.onclick = () => handleAnswer(button, index);
     optionsContainer.appendChild(button);
   });
 }
 
-// Handle answer selection and enable the "Next" button
+// Handle answer selection
 function handleAnswer(selectedButton, selectedIndex) {
   const allButtons = document.querySelectorAll(".option-button");
   allButtons.forEach((button) => button.classList.remove("selected"));
   selectedButton.classList.add("selected");
 
-  // Save the selected answer
   selectedAnswers[currentQuestionIndex] = questions[currentQuestionIndex].options[selectedIndex];
-  nextButton.disabled = false; // Enable the "Next" button
+  nextButton.disabled = false;
 }
 
-// Move to the next question or show results
+// Navigate to the next question or show results
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
-
   if (currentQuestionIndex < questions.length) {
-    displayQuestion(); // Show the next question
+    displayQuestion();
   } else {
-    showResults(); // Show results when all questions are answered
+    showResults();
   }
 });
 
@@ -114,13 +113,11 @@ async function getInsightsFromChatGPT(answers) {
         messages: [
           {
             role: 'system',
-            content: 'You are a helpful assistant that provides insights based on user answers.',
+            content: 'You are a helpful assistant. Provide three sections: (1) a life story summary, (2) an encouraging rewrite, and (3) practical advice for improvement.',
           },
           {
             role: 'user',
-            content: `The user provided the following answers to a questionnaire: ${answers.join(
-              ', '
-            )}. Generate a life story summary, encouraging rewrite, and practical advice.`,
+            content: `Here are the user's answers: ${answers.join(', ')}. Create the response.`,
           },
         ],
       }),
@@ -139,7 +136,7 @@ async function getInsightsFromChatGPT(answers) {
   }
 }
 
-// Show results with insights from ChatGPT
+// Show results with insights
 async function showResults() {
   questionText.style.display = "none";
   optionsContainer.style.display = "none";
@@ -149,8 +146,13 @@ async function showResults() {
   storySummary.textContent = "Generating insights... Please wait.";
 
   const insights = await getInsightsFromChatGPT(selectedAnswers);
-  storySummary.textContent = insights;
+
+  // Display sections
+  storySummary.innerHTML = insights;
+  lifeStoryHeading.style.display = "block";
+  encouragingRewriteHeading.style.display = "block";
+  practicalAdviceHeading.style.display = "block";
 }
 
-// Initialize the first question
+// Initialize the questionnaire
 displayQuestion();
