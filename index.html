@@ -6,11 +6,10 @@
   <title>Interactive Questionnaire</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> <!-- Fix jsPDF -->
 </head>
 <body>
   <div class="container">
-    <!-- Language Toggle Button -->
     <button id="language-toggle" class="language-toggle">He</button>
     <h1>Interactive Questionnaire</h1>
     <div id="question-container">
@@ -26,6 +25,7 @@
       <h2>Practical Advice</h2>
       <ul id="practical-advice"></ul>
     </div>
+    <button id="download-pdf" class="download-button" style="display: none;">Download as PDF</button>
   </div>
   <script src="script.js"></script>
 </body>
