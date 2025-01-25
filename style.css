@@ -1,76 +1,163 @@
-/* General Body Styling */
+/* General Styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
+  background-color: #f4f4f4;
   color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  line-height: 1.6;
+  direction: ltr; /* Default to left-to-right */
 }
 
 .container {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 50px auto;
   padding: 20px;
-  max-width: 600px;
-  width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-  text-align: center;
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-#question-container {
-  margin-top: 20px;
+h1 {
+  font-size: 1.8em;
+  margin: 0;
+  color: #444;
 }
 
-#options-container button {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+/* Language Toggle Button */
+.language-button {
+  padding: 5px 15px;
+  background-color: #007BFF;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
 }
 
-#options-container button:hover {
+.language-button:hover {
   background-color: #0056b3;
 }
 
-#options-container .selected {
-  background-color: #28a745;
-  color: #fff;
-  border: 2px solid #1e7e34;
-  transform: scale(1.05);
+/* Question Text */
+#question-text {
+  font-size: 1.2em;
+  margin-bottom: 15px;
 }
 
-#next-button {
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+/* Options Container */
+#options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
   cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.option-button:hover {
+  background: #007BFF;
+  color: white;
+}
+
+.option-button.selected {
+  background: #007BFF;
+  color: white;
+  border-color: #0056b3;
+}
+
+/* Next Button */
+#next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 100%;
 }
 
 #next-button:disabled {
-  background-color: #cccccc;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
 #next-button:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #0056b3;
 }
 
+/* Results Section */
 #result-container {
-  text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+#result-container h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.story-text {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  text-align: left; /* Default alignment */
+}
+
+body[dir="rtl"] .story-text {
+  text-align: right;
+}
+
+/* Practical Advice List */
+#practical-advice {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+body[dir="rtl"] #practical-advice {
+  list-style-type: none; /* Change for RTL */
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+#practical-advice li {
+  margin-bottom: 10px;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #next-button {
+    font-size: 0.9em;
+  }
+
+  .language-button {
+    padding: 5px 10px;
+  }
 }
