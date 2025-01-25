@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Questionnaire</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Added Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <div class="container">
@@ -16,8 +16,14 @@
     </div>
     <button id="next-button" disabled>Next</button>
     <div id="result-container" style="display: none;">
-      <h2>Your Story Summary</h2>
+      <h2 id="life-story-heading" style="display: none;">Your Life Story</h2>
       <p id="story-summary"></p>
+
+      <h2 id="encouraging-rewrite-heading" style="display: none;">Encouraging Rewrite</h2>
+      <p id="encouraging-rewrite"></p>
+
+      <h2 id="practical-advice-heading" style="display: none;">Practical Advice</h2>
+      <p id="practical-advice"></p>
     </div>
   </div>
   <script src="script.js"></script>
