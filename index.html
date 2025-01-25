@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Questionnaire</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>Interactive Questionnaire</h1>
-      <button id="language-toggle">He</button> <!-- Language Toggle Button -->
+      <button id="language-toggle" class="language-button">He</button>
     </div>
     <div id="question-container">
       <p id="question-text"></p>
@@ -20,11 +20,11 @@
     <button id="next-button" disabled>Next</button>
     <div id="result-container" style="display: none;">
       <h2>Your Life Story</h2>
-      <p id="story-summary"></p>
+      <p id="story-summary" class="story-text"></p>
       <h2>Encouraging Rewrite</h2>
-      <p id="encouraging-rewrite"></p>
+      <p id="encouraging-rewrite" class="story-text"></p>
       <h2>Practical Advice</h2>
-      <ul id="practical-advice"></ul>
+      <ul id="practical-advice" class="story-text"></ul>
     </div>
   </div>
   <script src="script.js"></script>
