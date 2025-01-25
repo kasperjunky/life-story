@@ -10,36 +10,6 @@ const questions = [
     ],
   },
   {
-    question: "How did you feel about yourself as a teenager?",
-    options: [
-      "Confident and self-assured.",
-      "Generally okay, with occasional self-doubt.",
-      "Insecure and unsure of myself.",
-      "I struggled with my self-worth.",
-      "I avoided thinking about myself.",
-    ],
-  },
-  {
-    question: "How would you describe your relationships with your friends?",
-    options: [
-      "I have deep, meaningful friendships.",
-      "I have some close friends, but not many.",
-      "I have mostly casual friendships.",
-      "I struggle to maintain friendships.",
-      "I feel isolated and without close friends.",
-    ],
-  },
-  {
-    question: "What do you feel you don’t have enough of in life?",
-    options: [
-      "Love and connection.",
-      "Someone who truly cares for me.",
-      "Confidence or self-esteem.",
-      "Purpose or direction.",
-      "Peace and emotional stability.",
-    ],
-  },
-  {
     question: "Do you feel comfortable with new experiences?",
     options: [
       "Yes, I love trying new things.",
@@ -99,33 +69,30 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// Get insights from ChatGPT through the backend
+// Fetch insights from the backend
 async function getInsightsFromChatGPT(answers) {
   try {
-    const response = await fetch(
-      "https://interactive-backend.onrender.com/api/generate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: [
-            {
-              role: "system",
-              content: `You are a helpful assistant. Based on the answers provided, return:
-1. A natural-language summary of the user’s life story (heading: "Your Life Story").
+    const response = await fetch('https://interactive-backend.onrender.com/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: [
+          {
+            role: 'system',
+            content: `You are a helpful assistant. Based on the answers provided, generate:
+1. A conversational summary of the user's life story, starting with phrases like "Based on your answers, it seems that you had a ____________ childhood."
 2. A rewritten, positive, and empowering version of the story (heading: "Rewrite Your Story").
-3. Practical steps the user can take to address gaps or challenges in their life story (heading: "Practical Suggestions").`,
-            },
-            {
-              role: "user",
-              content: `Here are the user's answers: ${answers.join(", ")}`,
-            },
-          ],
-        }),
-      }
-    );
+3. Practical steps the user can take to address gaps or challenges in their story (heading: "Practical Suggestions").`,
+          },
+          {
+            role: 'user',
+            content: `Here are the user's answers: ${answers.join(', ')}`,
+          },
+        ],
+      }),
+    });
 
     const data = await response.json();
     if (response.ok) {
@@ -148,7 +115,7 @@ async function getInsightsFromChatGPT(answers) {
   }
 }
 
-// Parse ChatGPT response into structured insights
+// Parse insights into structured sections
 function parseInsights(responseText) {
   const lifeStoryMatch = responseText.match(/Your Life Story:\s*(.+?)(?=Rewrite Your Story:|$)/s);
   const rewriteStoryMatch = responseText.match(/Rewrite Your Story:\s*(.+?)(?=Practical Suggestions:|$)/s);
@@ -161,7 +128,7 @@ function parseInsights(responseText) {
   };
 }
 
-// Show results with structured insights
+// Show results
 async function showResults() {
   questionText.style.display = "none";
   optionsContainer.style.display = "none";
