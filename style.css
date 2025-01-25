@@ -1,61 +1,49 @@
+/* General styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9f9f9;
-  direction: ltr; /* Default text direction */
+  text-align: center;
 }
 
 .container {
   max-width: 600px;
-  margin-top: 20px;
+  margin: 50px auto;
   padding: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 24px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
-#question-text {
-  font-size: 18px;
-  margin-bottom: 10px;
-  text-align: center;
+#question-container,
+#result-container {
+  margin-top: 20px;
 }
 
 .option-button {
   display: block;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 10px 0;
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
+  font-size: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f0f0f0;
   cursor: pointer;
-  text-align: left;
+  transition: background-color 0.3s ease;
 }
 
 .option-button:hover {
-  background-color: #e0e0e0;
-}
-
-.option-button.selected {
-  background-color: #007bff;
-  color: white;
+  background-color: #d1ecf1;
 }
 
 #next-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
   background-color: #007bff;
   color: white;
   border: none;
@@ -68,41 +56,29 @@ h1 {
   cursor: not-allowed;
 }
 
-.language-button {
+/* Language toggle button */
+.language-toggle {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 10px;
+  font-size: 1rem;
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.language-button:hover {
+.language-toggle:hover {
   background-color: #218838;
 }
 
-#result-container {
-  text-align: left; /* Align based on language */
-}
-
-body[dir="rtl"] #result-container {
+/* Align text based on language */
+body[dir="rtl"] {
   text-align: right;
 }
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  margin-bottom: 5px;
+body[dir="ltr"] {
+  text-align: left;
 }
