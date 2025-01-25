@@ -218,13 +218,19 @@ async function getInsightsFromChatGPT(answers) {
   }
 }
 
-// Download content as PDF
+/// Function to download content as PDF
 function downloadAsPDF(content) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.text(content, 10, 10);
+
+  // Split the text into lines for better formatting in the PDF
+  const lines = doc.splitTextToSize(content, 180);
+  doc.text(lines, 10, 10); // Start at (10, 10)
   doc.save("life_story.pdf");
 }
+
+// Ensure button placement outside text box
+downloadButton.style.margin = "20px auto";
 
 // Initialize
 displayQuestion();
