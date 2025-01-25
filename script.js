@@ -178,20 +178,44 @@ async function showResults() {
   resultContainer.style.display = "block";
   downloadButton.style.display = "block";
 
-  storySummary.textContent = "Generating insights... Please wait.";
+  storySummary.textContent = currentLanguage === "en" 
+    ? "Generating insights... Please wait." 
+    : "יוצר תובנות... אנא המתן.";
 
   const insights = await getInsightsFromChatGPT(selectedAnswers);
-  storySummary.textContent = insights.storySummary || "No summary available.";
-  encouragingRewrite.textContent =
-    insights.encouragingRewrite || "No encouraging rewrite available.";
-  practicalAdvice.innerHTML = (insights.practicalAdvice || [])
-    .map((advice) => `<li>${advice}</li>`)
-    .join("") || "<li>No practical advice available.</li>";
+  
+  // Update the insights text to directly address the user
+  storySummary.textContent = insights.storySummary
+    ? insights.storySummary.replace(/this user|the user|they/g, "you")
+    : currentLanguage === "en" 
+      ? "No summary available." 
+      : "אין סיכום זמין.";
+
+  encouragingRewrite.textContent = insights.encouragingRewrite
+    ? insights.encouragingRewrite.replace(/this user's|their/g, "your")
+    : currentLanguage === "en" 
+      ? "No encouraging rewrite available." 
+      : "אין שכתוב מעודד זמין.";
+
+  practicalAdvice.innerHTML = insights.practicalAdvice
+    ? insights.practicalAdvice
+        .map((advice) => `<li>${advice}</li>`)
+        .join("")
+    : currentLanguage === "en" 
+      ? "<li>No practical advice available.</li>" 
+      : "<li>אין עצות מעשיות זמינות.</li>";
 
   // Prepare content for PDF download
-  const pdfContent = `Your Life Story:\n${storySummary.textContent}\n\nEncouraging Rewrite:\n${encouragingRewrite.textContent}\n\nPractical Advice:\n${Array.from(practicalAdvice.querySelectorAll("li"))
-    .map((li) => li.textContent)
-    .join("\n")}`;
+  const pdfContent = `${currentLanguage === "en" ? "Your Life Story:" : "סיפור חייך:"}
+${storySummary.textContent}
+
+${currentLanguage === "en" ? "Encouraging Rewrite:" : "שכתוב מעודד:"}
+${encouragingRewrite.textContent}
+
+${currentLanguage === "en" ? "Practical Advice:" : "עצות מעשיות:"}
+${Array.from(practicalAdvice.querySelectorAll("li"))
+  .map((li) => li.textContent)
+  .join("\n")}`;
 
   downloadButton.onclick = () => downloadAsPDF(pdfContent);
 }
