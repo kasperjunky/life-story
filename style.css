@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
 /* Vibrant Growth Theme */
 
@@ -95,7 +95,6 @@ p {
   cursor: not-allowed;
 }
 
-/* Buttons Styling */
 .download-button,
 #advice-button {
   display: block;
@@ -122,13 +121,24 @@ p {
 
 #advice-button {
   background-color: #FF8C42;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #advice-button:hover {
   background-color: #E77B3A;
+}
+
+/* Ensure the Give me Advice button is centered correctly */
+#advice-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Smooth hover animations for interactive elements */
@@ -161,31 +171,17 @@ button:hover, .option-button:hover {
   color: #5A4C3E;
 }
 
-/* Make sure the headings are centered */
-h1, h2 {
-  text-align: center;
-}
-
-/* Centering the Give Me Advice Button */
-#advice-button {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Remove bullet point from the first line of advice */
-#practical-advice li:first-child {
-  list-style-type: none;
-}
-
+/* Ensure the advice text has a different font */
 #practical-advice {
-  padding-left: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  color: #333333;
 }
 
-#practical-advice li {
-  list-style-type: none;
-}
-
-/* Hide Encouraging Rewrite */
+/* Ensure only Practical Ways for Improvement is displayed */
 #encouraging-rewrite {
-  display: none;
+  display: block;
+  font-style: italic;
+  color: #FF8C42;
 }
