@@ -118,8 +118,10 @@ p {
 
 #advice-button {
   background-color: #ff9800;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #advice-button:hover {
@@ -161,7 +163,17 @@ h1, h2 {
   text-align: center;
 }
 
-/* Remove bullet point from first line of advice */
+/* Remove bullet point and numbering from first line of advice */
 #practical-advice li:first-child {
   list-style-type: none;
+  counter-reset: none;
+}
+
+#practical-advice {
+  padding-left: 0;
+}
+
+#practical-advice li {
+  list-style-type: none;
+  counter-reset: none;
 }
