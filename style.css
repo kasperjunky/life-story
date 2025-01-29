@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-/* Rainbow Theme - Saved */
+/* Vibrant Growth Theme */
 
 body {
   font-family: Arial, sans-serif;
@@ -98,13 +98,13 @@ p {
 .download-button,
 #advice-button {
   display: block;
-  width: 85%;
+  width: 70%;
   margin: 20px auto;
-  padding: 12px;
-  font-size: 18px;
+  padding: 10px;
+  font-size: 16px;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -166,6 +166,14 @@ h1, h2 {
   text-align: center;
 }
 
+/* Ensure Give me Advice button is centered */
+#advice-button {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Remove bullet point and numbering from first line of advice */
 #practical-advice li:first-child {
   list-style-type: none;
@@ -179,4 +187,9 @@ h1, h2 {
 #practical-advice li {
   list-style-type: none;
   counter-reset: none;
+}
+
+/* Ensure only Practical Ways for Improvement is displayed */
+#encouraging-rewrite {
+  display: none;
 }
