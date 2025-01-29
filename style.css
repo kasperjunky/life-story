@@ -1,92 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #f6f1eb; /* Warm beige background */
+  color: #4a3f35; /* Soft earthy text color */
   direction: ltr;
 }
 
 .container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: #fffaf3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
 }
 
 h1, h2 {
+  font-family: 'Playfair Display', serif;
   text-align: center;
   margin-bottom: 20px;
 }
 
+p {
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
 #language-toggle {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  background-color: #8c6a5d;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 #language-toggle:hover {
-  background-color: #0056b3;
+  background-color: #6a4f42;
 }
 
 .option-button {
   display: block;
   width: 100%;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 12px 0;
+  padding: 12px;
   font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f8f8f8;
+  border: none;
+  border-radius: 10px;
+  background-color: #e8d8c4;
+  color: #4a3f35;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .option-button:hover {
-  background-color: #007bff;
+  background-color: #d4b89a;
   color: white;
 }
 
 .option-button.selected {
-  background-color: #007bff;
+  background-color: #8c6a5d;
   color: white;
 }
 
 #next-button {
   display: block;
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #28a745;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #7d5a50;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 #next-button:disabled {
-  background-color: #ddd;
+  background-color: #c7b8a8;
   cursor: not-allowed;
 }
 
 .download-button,
 #advice-button {
   display: block;
-  width: 80%;
+  width: 85%;
   margin: 20px auto;
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 18px;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .download-button {
@@ -98,45 +115,22 @@ h1, h2 {
 }
 
 #advice-button {
-  background-color: #17a2b8;
+  background-color: #8c6a5d;
 }
 
 #advice-button:hover {
-  background-color: #138496;
+  background-color: #6a4f42;
 }
 
-#result-container {
-  margin-top: 20px;
+/* Smooth hover animations for interactive elements */
+button:hover, .option-button:hover {
+  transform: translateY(-2px);
 }
 
-#practical-advice {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#practical-advice li {
-  margin-bottom: 10px;
-}
-#advice-button {
-  background-color: #ff9800;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px;
-  margin-top: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-}
-
-#advice-button:hover {
-  background-color: #e68900;
-}
 /* Loading Spinner */
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #3498db;
+  border-left-color: #8c6a5d;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -148,13 +142,14 @@ h1, h2 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 /* Style for the new intro text */
 .intro-text {
   text-align: center;
-  font-size: 1.1em;
-  max-width: 80%;
+  font-size: 1.2em;
+  max-width: 85%;
   margin: 10px auto;
-  color: #444;
+  color: #5a4c3e;
 }
 
 /* Make sure the headings are centered */
@@ -166,16 +161,16 @@ h1, h2 {
 .advice-button {
   display: block;
   margin: 15px auto;
-  background-color: #007BFF;
+  background-color: #8c6a5d;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-size: 1em;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .advice-button:hover {
-  background-color: #0056b3;
+  background-color: #6a4f42;
 }
-
