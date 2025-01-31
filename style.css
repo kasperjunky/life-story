@@ -45,6 +45,7 @@ p {
   color: #555;
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  animation: colorfulFadeIn 1.5s ease-in-out;
 }
 
 /* Make questions bold */
@@ -98,7 +99,7 @@ p {
 
 #next-button, #download-pdf {
   display: block;
-  width: 40%;
+  width: 45%;
   margin: 40px auto 30px auto;
   padding: 10px;
   font-size: 16px;
@@ -133,7 +134,7 @@ p {
 
 .download-button {
   background-color: #008F5D;
-  width: 40%;
+  width: 45%;
 }
 
 .download-button:hover {
@@ -165,6 +166,15 @@ p {
 /* Smooth hover animations for interactive elements */
 button:hover, .option-button:hover {
   transform: translateY(-2px);
+}
+
+/* Colorful Fade-in Animation for Insights */
+@keyframes colorfulFadeIn {
+  0% { color: #FF5733; }
+  25% { color: #FFD700; }
+  50% { color: #32CD32; }
+  75% { color: #1E90FF; }
+  100% { color: #555; }
 }
 
 /* Loading Spinner */
