@@ -1,8 +1,8 @@
-/* White Theme - Updated */
+/* White Theme - Updated with Adjusted Halo */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
-/* White Theme with Compact Colorful Halo */
+/* White Theme with Compact Halo */
 
 body {
   font-family: Arial, sans-serif;
@@ -18,9 +18,9 @@ body {
   margin: 50px auto;
   padding: 25px;
   background-color: white;
-  box-shadow: 0 0 25px 15px rgba(255, 0, 150, 0.2),
-              0 0 25px 30px rgba(0, 150, 255, 0.2),
-              0 0 25px 45px rgba(0, 255, 150, 0.2);
+  box-shadow: 0 0 15px 9px rgba(255, 0, 150, 0.2),
+              0 0 15px 18px rgba(150, 0, 255, 0.2),
+              0 0 15px 27px rgba(0, 100, 255, 0.2);
   border-radius: 12px;
 }
 
