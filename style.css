@@ -34,8 +34,17 @@ h1, h2 {
 
 p {
   line-height: 1.6;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  color: #555;
   text-wrap: balance;
+}
+
+/* Styling for insights and advice */
+#story-summary, #encouraging-rewrite, #practical-advice {
+  font-size: 1.2em;
+  color: #555;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
 
 /* Make questions bold */
@@ -87,7 +96,7 @@ p {
   color: white;
 }
 
-#next-button {
+#next-button, #download-pdf {
   display: block;
   width: 50%;
   margin: 40px auto 30px auto;
@@ -107,8 +116,7 @@ p {
   cursor: not-allowed;
 }
 
-.download-button,
-#advice-button {
+.download-button, #advice-button {
   display: block;
   max-width: 60%;
   margin: 20px auto;
@@ -124,11 +132,11 @@ p {
 }
 
 .download-button {
-  background-color: #444;
+  background-color: #008F5D;
 }
 
 .download-button:hover {
-  background-color: #333;
+  background-color: #006F4A;
 }
 
 #advice-button {
@@ -180,20 +188,5 @@ button:hover, .option-button:hover {
   font-size: 1.2em;
   max-width: 85%;
   margin: 10px auto;
-  color: #0073E6;
-}
-
-/* Ensure the advice text has a different font */
-#practical-advice {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1em;
-  font-weight: 400;
-  color: #333333;
-}
-
-/* Ensure only Practical Ways for Improvement is displayed */
-#encouraging-rewrite {
-  display: block;
-  font-style: italic;
   color: #0073E6;
 }
