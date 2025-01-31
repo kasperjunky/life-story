@@ -1,8 +1,8 @@
-/* White Theme - Updated with Adjusted Halo */
+/* White Theme - Enhanced Readability & Styling */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
-/* White Theme with Compact Halo */
+/* White Theme with Refined Halo & Improved Readability */
 
 body {
   font-family: Arial, sans-serif;
@@ -18,9 +18,9 @@ body {
   margin: 50px auto;
   padding: 25px;
   background-color: white;
-  box-shadow: 0 0 15px 9px rgba(255, 0, 150, 0.2),
-              0 0 15px 18px rgba(150, 0, 255, 0.2),
-              0 0 15px 27px rgba(0, 100, 255, 0.2);
+  box-shadow: 0 0 20px 12px rgba(0, 200, 150, 0.2),
+              0 0 20px 24px rgba(150, 0, 255, 0.2),
+              0 0 20px 36px rgba(0, 100, 255, 0.2);
   border-radius: 12px;
 }
 
@@ -35,6 +35,11 @@ p {
   line-height: 1.6;
   font-size: 1.1em;
   text-wrap: balance;
+}
+
+/* Make questions bold */
+.question {
+  font-weight: bold;
 }
 
 #language-toggle {
@@ -63,30 +68,30 @@ p {
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background-color: #f0f0f0;
-  color: #333333;
+  background-color: #D0EFFF;
+  color: #005F9E;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
 .option-button:hover {
-  background-color: #ddd;
+  background-color: #A0D8FF;
   color: white;
 }
 
 .option-button.selected {
-  background-color: #444;
+  background-color: #0073E6;
   color: white;
 }
 
 #next-button {
   display: block;
-  width: 80%;
-  margin: 25px auto;
+  width: 60%;
+  margin: 30px auto 20px auto;
   padding: 10px;
   font-size: 16px;
-  background-color: #666;
+  background-color: #00A676;
   color: white;
   border: none;
   border-radius: 8px;
@@ -96,7 +101,7 @@ p {
 }
 
 #next-button:disabled {
-  background-color: #ccc;
+  background-color: #A6C4CF;
   cursor: not-allowed;
 }
 
