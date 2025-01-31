@@ -1,12 +1,14 @@
+/* White Theme - Saved */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
-/* Light Pastel Blue-Green Theme */
+/* White Theme with Colorful Halo */
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #B3E5FC, #B2DFDB);
+  background: white;
   color: #333333;
   direction: ltr;
 }
@@ -15,8 +17,10 @@ body {
   max-width: 700px;
   margin: 50px auto;
   padding: 25px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  box-shadow: 0 0 50px 30px rgba(255, 0, 150, 0.2),
+              0 0 50px 60px rgba(0, 150, 255, 0.2),
+              0 0 50px 90px rgba(0, 255, 150, 0.2);
   border-radius: 12px;
 }
 
@@ -24,7 +28,7 @@ h1, h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
   margin-bottom: 20px;
-  color: #00796B;
+  color: #333333;
 }
 
 p {
@@ -37,7 +41,7 @@ p {
   top: 15px;
   right: 15px;
   padding: 6px 12px;
-  background-color: #80CBC4;
+  background-color: #888;
   color: white;
   border: none;
   border-radius: 8px;
@@ -47,7 +51,7 @@ p {
 }
 
 #language-toggle:hover {
-  background-color: #4DB6AC;
+  background-color: #666;
 }
 
 .option-button {
@@ -58,7 +62,7 @@ p {
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background-color: #E0F2F1;
+  background-color: #f0f0f0;
   color: #333333;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -66,12 +70,12 @@ p {
 }
 
 .option-button:hover {
-  background-color: #B2DFDB;
+  background-color: #ddd;
   color: white;
 }
 
 .option-button.selected {
-  background-color: #00796B;
+  background-color: #444;
   color: white;
 }
 
@@ -81,7 +85,7 @@ p {
   margin: 25px auto;
   padding: 10px;
   font-size: 16px;
-  background-color: #4DB6AC;
+  background-color: #666;
   color: white;
   border: none;
   border-radius: 8px;
@@ -91,7 +95,7 @@ p {
 }
 
 #next-button:disabled {
-  background-color: #A6C4CF;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
@@ -112,15 +116,15 @@ p {
 }
 
 .download-button {
-  background-color: #00695C;
+  background-color: #444;
 }
 
 .download-button:hover {
-  background-color: #00796B;
+  background-color: #333;
 }
 
 #advice-button {
-  background-color: #80CBC4;
+  background-color: #888;
   margin: 20px auto;
   display: flex;
   justify-content: center;
@@ -129,7 +133,7 @@ p {
 }
 
 #advice-button:hover {
-  background-color: #4DB6AC;
+  background-color: #666;
 }
 
 /* Ensure the Give me Advice button is centered correctly */
@@ -149,7 +153,7 @@ button:hover, .option-button:hover {
 /* Loading Spinner */
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #80CBC4;
+  border-left-color: #888;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -168,7 +172,7 @@ button:hover, .option-button:hover {
   font-size: 1.2em;
   max-width: 85%;
   margin: 10px auto;
-  color: #004D40;
+  color: #333;
 }
 
 /* Ensure the advice text has a different font */
@@ -183,5 +187,5 @@ button:hover, .option-button:hover {
 #encouraging-rewrite {
   display: block;
   font-style: italic;
-  color: #00796B;
+  color: #666;
 }
