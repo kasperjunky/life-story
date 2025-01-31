@@ -1,8 +1,8 @@
-/* White Theme - Saved */
+/* White Theme - Updated */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
-/* White Theme with Colorful Halo */
+/* White Theme with Compact Colorful Halo */
 
 body {
   font-family: Arial, sans-serif;
@@ -18,9 +18,9 @@ body {
   margin: 50px auto;
   padding: 25px;
   background-color: white;
-  box-shadow: 0 0 50px 30px rgba(255, 0, 150, 0.2),
-              0 0 50px 60px rgba(0, 150, 255, 0.2),
-              0 0 50px 90px rgba(0, 255, 150, 0.2);
+  box-shadow: 0 0 25px 15px rgba(255, 0, 150, 0.2),
+              0 0 25px 30px rgba(0, 150, 255, 0.2),
+              0 0 25px 45px rgba(0, 255, 150, 0.2);
   border-radius: 12px;
 }
 
@@ -28,12 +28,13 @@ h1, h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
   margin-bottom: 20px;
-  color: #333333;
+  color: #0073E6;
 }
 
 p {
   line-height: 1.6;
   font-size: 1.1em;
+  text-wrap: balance;
 }
 
 #language-toggle {
@@ -172,7 +173,7 @@ button:hover, .option-button:hover {
   font-size: 1.2em;
   max-width: 85%;
   margin: 10px auto;
-  color: #333;
+  color: #0073E6;
 }
 
 /* Ensure the advice text has a different font */
@@ -187,5 +188,5 @@ button:hover, .option-button:hover {
 #encouraging-rewrite {
   display: block;
   font-style: italic;
-  color: #666;
+  color: #0073E6;
 }
