@@ -15,12 +15,13 @@
 
     <!-- Introductory Explanation -->
     <p class="intro-text">
-      The way you perceive your life shapes your inner narrative. This questionnaire, powered by AI, will help you uncover how you view your key life moments. 
+      <span class="highlight">The way you perceive your life shapes your inner narrative.</span><br>
+      This questionnaire, powered by AI, will help you uncover how you view your key life moments.<br>
       Becoming aware of your inner story allows you to recognize gaps and reframe it in a more positive and empowering way.
     </p>
 
     <div id="question-container">
-      <p id="question-text"></p>
+      <p id="question-text" class="question"></p>
       <div id="options-container"></div>
     </div>
     <button id="next-button" disabled>Next</button>
@@ -28,9 +29,9 @@
     <div id="result-container" style="display: none;">
       <h2>Your Life Story</h2>
       <p id="story-summary"></p>
+      <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
 
-      <!-- Updated Encouraging Rewrite Heading -->
-      <h2>Let's look at your life story in a kind, empowering way—like your most beloved friends would</h2>
+      <h2>Let's reframe your story in an empowering way</h2>
       <p id="encouraging-rewrite"></p>
 
       <h2>Would you like a practical advice?</h2>
