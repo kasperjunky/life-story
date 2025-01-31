@@ -98,7 +98,7 @@ p {
 
 #next-button, #download-pdf {
   display: block;
-  width: 50%;
+  width: 40%;
   margin: 40px auto 30px auto;
   padding: 10px;
   font-size: 16px;
@@ -133,6 +133,7 @@ p {
 
 .download-button {
   background-color: #008F5D;
+  width: 40%;
 }
 
 .download-button:hover {
