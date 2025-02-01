@@ -1,4 +1,4 @@
-// Version 1 - Fixing Button Functionality & Insights Display
+// Version 1 - Fixing Button Functionality (Hide Advice Button & Fix PDF Download)
 
 // Clear previous cache or local storage
 function clearCache() {
@@ -130,20 +130,13 @@ adviceButton.addEventListener("click", async () => {
         ? insights.practicalAdvice.map(advice => `<li>${advice}</li>`).join("")
         : "<li>⚠ No practical advice available.</li>";
     console.log("✅ Advice displayed successfully.");
+    adviceButton.style.display = "none";
 });
 
 downloadButton.addEventListener("click", () => {
     console.log("🔵 'Download as PDF' button clicked");
-    const pdfContent = `Your Life Story:\n${storySummary.textContent}\n\nEncouraging Rewrite:\n${encouragingRewrite.textContent}\n\nPractical Advice:\n${practicalAdvice.textContent}`;
+    const pdfContent = `Your Life Story:\n${storySummary.textContent}\n\nEncouraging Rewrite:\n${encouragingRewrite.textContent}\n\nPractical Advice:\n${practicalAdvice.innerText}`;
     downloadAsPDF(pdfContent);
 });
-
-function downloadAsPDF(content) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    const lines = doc.splitTextToSize(content, 180);
-    doc.text(lines, 10, 10);
-    doc.save("life_story.pdf");
-}
 
 displayQuestion();
