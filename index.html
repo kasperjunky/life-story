@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button id="language-toggle">He</button>
+        <h1>Your Inner Story</h1>
+        <p id="question-text" class="question"></p>
+        <div id="options-container"></div>
+        <button id="next-button" disabled>Next</button>
+        <div id="result-container" style="display: none;">
+            <p id="story-summary"></p>
+            <p id="encouraging-rewrite"></p>
+            <p id="practical-advice"></p>
+            <button id="advice-button">Give me advice</button>
+        </div>
+        <div id="loading-spinner" class="loading-spinner" style="display: none;">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" stroke-width="5" fill="none" stroke="#ddd"></circle>
+                <circle cx="25" cy="25" r="20" stroke-width="5" fill="none" stroke="#FF5733"
+                    stroke-linecap="round" stroke-dasharray="125" stroke-dashoffset="0"></circle>
+            </svg>
+        </div>
+        <button id="download-pdf" style="display: none;">Download as PDF</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
