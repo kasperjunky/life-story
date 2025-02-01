@@ -1,4 +1,4 @@
-/* Version 1 - Stable Style with Improved Button Styling */
+/* Version 1 - Styling Fixes for Centered Advice Button & Shorter PDF Button */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
@@ -62,7 +62,7 @@ p {
   color: white;
 }
 
-#next-button, #download-pdf {
+#next-button {
   display: block;
   width: 50%;
   margin: 20px auto;
@@ -80,6 +80,20 @@ p {
 
 #download-pdf {
   display: none;
+  width: auto;
+  min-width: 160px;
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #008F5D;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 #language-toggle {
