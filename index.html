@@ -29,8 +29,15 @@
     <div id="result-container" style="display: none;">
       <h2>Your Life Story</h2>
       <p id="story-summary"></p>
-      <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
-
+      
+      <div id="loading-spinner" class="loading-spinner" style="display: none;">
+        <svg width="50" height="50" viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r="20" stroke-width="5" fill="none" stroke="#ddd"></circle>
+          <circle cx="25" cy="25" r="20" stroke-width="5" fill="none" stroke="#FF5733"
+            stroke-linecap="round" stroke-dasharray="125" stroke-dashoffset="0"></circle>
+        </svg>
+      </div>
+      
       <h2>Let's reframe your story in an empowering way</h2>
       <p id="encouraging-rewrite"></p>
 
@@ -40,7 +47,10 @@
     </div>
   </div>
 
-  <button id="download-pdf" class="download-button" style="display: none;">Download as PDF</button>
+  <div class="button-container">
+    <button id="download-pdf" class="download-button">Download as PDF</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
