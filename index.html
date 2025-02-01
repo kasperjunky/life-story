@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Life Story</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button id="language-toggle">He</button>
+        <h1>Your Inner Story</h1>
+        <p class="intro-text" style="color: blue;">
+            The way you perceive your life shapes your inner narrative. 
+            This questionnaire, powered by AI, will help you uncover how you view your key life moments. 
+            Becoming aware of your inner story allows you to recognize gaps and reframe it in a more positive and empowering way.
+        </p>
+        <p id="question-text" class="question"></p>
+        <div id="options-container"></div>
+        <button id="next-button" disabled>Next</button>
+        <div id="result-container" style="display: none;">
+            <h2>Your Life Story</h2>
+            <p id="story-summary"></p>
+            <h2>Encouraging Rewrite</h2>
+            <p id="encouraging-rewrite"></p>
+            <h2>Practical Advice</h2>
+            <p id="practical-advice"></p>
+            <button id="advice-button">Give me advice</button>
+        </div>
+    </div>
+    <button id="download-pdf" style="display: none; margin-top: 20px; display: block; text-align: center;">Download as PDF</button>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
