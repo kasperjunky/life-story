@@ -1,4 +1,4 @@
-/* White Theme - Finalized Halo Update */
+/* Updated Style - Finalized Halo Update */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
 
@@ -99,7 +99,7 @@ p {
 
 #next-button, #download-pdf {
   display: block;
-  width: 45%;
+  width: 35%;
   margin: 40px auto 30px auto;
   padding: 10px;
   font-size: 16px;
@@ -117,24 +117,9 @@ p {
   cursor: not-allowed;
 }
 
-.download-button, #advice-button {
-  display: block;
-  max-width: 60%;
-  margin: 20px auto;
-  padding: 8px;
-  font-size: 16px;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
 .download-button {
   background-color: #008F5D;
-  width: 45%;
+  width: 35%;
 }
 
 .download-button:hover {
@@ -142,16 +127,36 @@ p {
 }
 
 #advice-button {
-  background-color: #888;
+  background-color: #FFA500;
   margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 #advice-button:hover {
-  background-color: #666;
+  background-color: #FF6347;
+}
+
+/* Colorful Progress Circle */
+@keyframes colorfulProgress {
+  0% { stroke: #FF5733; }
+  25% { stroke: #FFD700; }
+  50% { stroke: #32CD32; }
+  75% { stroke: #1E90FF; }
+  100% { stroke: #FF5733; }
+}
+
+.loading-spinner circle {
+  animation: colorfulProgress 2s linear infinite;
 }
 
 /* Ensure the Give me Advice button is centered correctly */
@@ -175,29 +180,4 @@ button:hover, .option-button:hover {
   50% { color: #32CD32; }
   75% { color: #1E90FF; }
   100% { color: #555; }
-}
-
-/* Loading Spinner */
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #888;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 10px auto;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Style for the new intro text */
-.intro-text {
-  text-align: center;
-  font-size: 1.2em;
-  max-width: 85%;
-  margin: 10px auto;
-  color: #0073E6;
 }
