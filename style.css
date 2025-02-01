@@ -1,0 +1,124 @@
+/* Updated Style - Fixing Questions, Buttons & Progress Circle */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: #333333;
+  direction: ltr;
+}
+
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0 0 10px 6px rgba(0, 100, 255, 0.3),
+              0 0 20px 12px rgba(255, 0, 0, 0.3),
+              0 0 30px 18px rgba(150, 0, 255, 0.3),
+              0 0 40px 24px rgba(0, 200, 100, 0.3);
+  border-radius: 12px;
+  position: relative;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0073E6;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.2em;
+  color: #555;
+  text-wrap: balance;
+}
+
+/* Ensure Progress Circle is Centered */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 50px;
+  height: 50px;
+}
+
+.loading-spinner svg {
+  animation: rotate 2s linear infinite;
+}
+
+.loading-spinner circle:nth-child(2) {
+  stroke-dasharray: 125;
+  stroke-dashoffset: 125;
+  animation: progressColor 2s linear infinite, dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0% { stroke-dashoffset: 125; }
+  50% { stroke-dashoffset: 30; }
+  100% { stroke-dashoffset: 125; }
+}
+
+@keyframes progressColor {
+  0% { stroke: #FF5733; }
+  25% { stroke: #FFD700; }
+  50% { stroke: #32CD32; }
+  75% { stroke: #1E90FF; }
+  100% { stroke: #FF5733; }
+}
+
+/* Ensure Give Me Advice button is centered */
+#advice-button {
+  background-color: #FFA500;
+  display: block;
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin: 20px auto;
+}
+
+#advice-button:hover {
+  background-color: #FF6347;
+}
+
+/* Hide Download PDF button until second insight appears */
+#download-pdf {
+  display: none;
+  background-color: #008F5D;
+  width: auto;
+  max-width: 180px;
+  padding: 10px 20px;
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#download-pdf:hover {
+  background-color: #006F4A;
+}
+
+/* Move Language Button Closer */
+#language-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
