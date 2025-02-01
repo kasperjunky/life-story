@@ -9,6 +9,7 @@ function clearCache() {
 // Call clearCache on page load
 clearCache();
 
+// Questionnaire Data
 const questions = {
   en: [
     {
@@ -146,15 +147,19 @@ const downloadButton = document.getElementById("download-pdf");
 const adviceButton = document.getElementById("advice-button");
 const loadingSpinner = document.getElementById("loading-spinner");
 
-let currentQuestionIndex = 0;
-let selectedAnswers = [];
-let currentLanguage = "en";
-
 // Display the current question
 function displayQuestion() {
+  console.log("Displaying question:", currentQuestionIndex);
+
+  if (currentQuestionIndex >= questions[currentLanguage].length) {
+    showResults();
+    return;
+  }
+
   const currentQuestion = questions[currentLanguage][currentQuestionIndex];
   questionText.textContent = currentQuestion.question;
   optionsContainer.innerHTML = "";
+
   nextButton.disabled = true;
 
   currentQuestion.options.forEach((option, index) => {
@@ -177,11 +182,7 @@ function handleAnswer(selectedButton, selectedIndex) {
 // Move to the next question or show results
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
-  if (currentQuestionIndex < questions[currentLanguage].length) {
-    displayQuestion();
-  } else {
-    showResults();
-  }
+  displayQuestion();
 });
 
 // Switch language
