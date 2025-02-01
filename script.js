@@ -133,7 +133,7 @@ let currentQuestionIndex = 0;
 let selectedAnswers = [];
 let currentLanguage = "en";
 
-// DOM elements
+// DOM Elements
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const nextButton = document.getElementById("next-button");
@@ -145,6 +145,10 @@ const languageToggle = document.getElementById("language-toggle");
 const downloadButton = document.getElementById("download-pdf");
 const adviceButton = document.getElementById("advice-button");
 const loadingSpinner = document.getElementById("loading-spinner");
+
+let currentQuestionIndex = 0;
+let selectedAnswers = [];
+let currentLanguage = "en";
 
 // Display the current question
 function displayQuestion() {
@@ -164,9 +168,8 @@ function displayQuestion() {
 
 // Handle answer selection
 function handleAnswer(selectedButton, selectedIndex) {
-  document.querySelectorAll(".option-button").forEach((button) => button.classList.remove("selected"));
+  document.querySelectorAll(".option-button").forEach(button => button.classList.remove("selected"));
   selectedButton.classList.add("selected");
-
   selectedAnswers[currentQuestionIndex] = questions[currentLanguage][currentQuestionIndex].options[selectedIndex];
   nextButton.disabled = false;
 }
@@ -199,8 +202,8 @@ async function showResults() {
   resultContainer.style.display = "block";
   downloadButton.style.display = "block";
   adviceButton.style.display = "inline-block";
-
-  // Show loading animation
+  
+  // Show progress animation
   loadingSpinner.style.display = "block";
 
   storySummary.textContent =
@@ -210,30 +213,23 @@ async function showResults() {
 
   const insights = await getInsightsFromChatGPT(selectedAnswers, false);
 
-  // Hide loading animation
+  // Hide progress animation
   loadingSpinner.style.display = "none";
 
-  // Display insights
   storySummary.textContent = insights.storySummary
     ? insights.storySummary.replace(/this user|the user|they/g, "you")
     : currentLanguage === "en"
       ? "No summary available."
       : "אין סיכום זמין.";
 
-  encouragingRewrite.textContent = insights.encouragingRewrite?.trim()
-    ? insights.encouragingRewrite.replace(/This user|The user|They/g, "You")
-    : currentLanguage === "en"
-      ? "No rewritten version available."
-      : "אין גרסה מחודשת זמינה.";
-
-  // Prepare content for PDF download
-  const pdfContent = `Your Life Story:
-${storySummary.textContent}
-
-Encouraging Rewrite:
-${encouragingRewrite.textContent}`;
-
-  downloadButton.onclick = () => downloadAsPDF(pdfContent);
+  if (!insights.encouragingRewrite || insights.encouragingRewrite.trim() === "") {
+    encouragingRewrite.textContent =
+      currentLanguage === "en"
+        ? "Couldn't get an insight. Refresh to try again."
+        : "לא ניתן היה לקבל תובנה. רענן כדי לנסות שוב.";
+  } else {
+    encouragingRewrite.textContent = insights.encouragingRewrite.replace(/This user|The user|They/g, "You");
+  }
 }
 
 // Fetch insights from the backend
@@ -244,7 +240,6 @@ async function getInsightsFromChatGPT(answers, includeAdvice) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ language: currentLanguage, answers, includeAdvice })
     });
-
     return await response.json();
   } catch (error) {
     console.error("Network error:", error);
@@ -267,32 +262,11 @@ adviceButton.addEventListener("click", async () => {
   const insights = await getInsightsFromChatGPT(selectedAnswers, true);
 
   practicalAdvice.innerHTML = insights.practicalAdvice
-    ? insights.practicalAdvice.map((advice) => `<li>${advice}</li>`).join("")
+    ? insights.practicalAdvice.map(advice => `<li>${advice}</li>`).join("")
     : currentLanguage === "en"
       ? "<li>No practical advice available.</li>"
       : "<li>אין עצות מעשיות זמינות.</li>";
-
-  // Prepare updated PDF with practical advice
-  const pdfContent = `Your Life Story:
-${storySummary.textContent}
-
-Encouraging Rewrite:
-${encouragingRewrite.textContent}
-
-Practical Advice:
-${Array.from(practicalAdvice.querySelectorAll("li")).map((li) => li.textContent).join("\n")}`;
-
-  downloadButton.onclick = () => downloadAsPDF(pdfContent);
 });
-
-// Function to download as PDF
-function downloadAsPDF(content) {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  const lines = doc.splitTextToSize(content, 180);
-  doc.text(lines, 10, 10);
-  doc.save("life_story.pdf");
-}
 
 // Initialize
 displayQuestion();
